@@ -15,7 +15,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
         {
             var deleteCommand = new DeleteCommand(null);
 
-            Assert.AreEqual(deleteCommand.Type, CommandType.Delete);
+            Assert.AreEqual(CommandType.Delete, deleteCommand.Type);
         }
 
         [Test]
@@ -42,9 +42,9 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = deleteCommand.Execute(context);
 
-            Assert.AreEqual(result, "'User Name' удален(а) из списка");
-            Assert.AreEqual(chatMembers.Count, 1);
-            Assert.AreEqual(chatMembers[0].Name, "Any User Name");
+            Assert.AreEqual("'User Name' удален(а) из списка", result);
+            Assert.AreEqual(1, chatMembers.Count);
+            Assert.AreEqual("Any User Name", chatMembers[0].Name);
         }
 
         [Test]
@@ -71,9 +71,9 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = deleteCommand.Execute(context);
 
-            Assert.AreEqual(result, "'User Name' удален(а) из списка");
-            Assert.AreEqual(chatMembers.Count, 1);
-            Assert.AreEqual(chatMembers[0].Name, "Sender User Name");
+            Assert.AreEqual("'User Name' удален(а) из списка", result);
+            Assert.AreEqual(1, chatMembers.Count);
+            Assert.AreEqual("Sender User Name", chatMembers[0].Name);
         }
 
         [Test]
@@ -100,8 +100,8 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = deleteCommand.Execute(context);
 
-            Assert.AreEqual(result, "'User Name' отсутствует в списке");
-            Assert.AreEqual(chatMembers.Count, 2);
+            Assert.AreEqual("'User Name' отсутствует в списке", result);
+            Assert.AreEqual(2, chatMembers.Count);
         }
 
         [Test]
@@ -128,8 +128,8 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = deleteCommand.Execute(context);
 
-            Assert.AreEqual(result, "'User Name' отсутствует в списке");
-            Assert.AreEqual(chatMembers.Count, 2);
+            Assert.AreEqual("'User Name' отсутствует в списке", result);
+            Assert.AreEqual(2, chatMembers.Count);
         }
 
         private IDataProvider GetDbProvider(List<ChatMember> chatMembers)

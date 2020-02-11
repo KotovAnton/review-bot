@@ -40,7 +40,7 @@ namespace iRIS.ReviewBot.Tests.Bot
             var messageContext = new MessageData("Sender Name", "Chat Id", "Bot", "Bot bla-bla-bla");
 
             var result = messageHandler.Processing(messageContext);
-            Assert.AreEqual(result, "It was unknown command");
+            Assert.AreEqual("It was unknown command", result);
         }
 
         [Test]
@@ -75,11 +75,11 @@ namespace iRIS.ReviewBot.Tests.Bot
             var messageContext = new MessageData("Sender Name", "Chat Id", "Bot", "Bot add bla-bla-bla");
 
             var result = messageHandler.Processing(messageContext);
-            Assert.AreEqual(result, "It was add command");
+            Assert.AreEqual("It was add command", result);
             Assert.IsNotNull(CommandData);
-            Assert.AreEqual(CommandData.ChatId, "Chat Id");
-            Assert.AreEqual(CommandData.Parameters, "bla-bla-bla");
-            Assert.AreEqual(CommandData.SenderName, "Sender Name");
+            Assert.AreEqual("Chat Id", CommandData.ChatId);
+            Assert.AreEqual("bla-bla-bla", CommandData.Parameters);
+            Assert.AreEqual("Sender Name", CommandData.SenderName);
         }
     }
 }

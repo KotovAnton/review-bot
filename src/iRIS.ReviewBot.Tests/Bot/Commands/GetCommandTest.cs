@@ -17,7 +17,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
         {
             var getCommand = new GetCommand(null, null, null, null);
 
-            Assert.AreEqual(getCommand.Type, CommandType.Get);
+            Assert.AreEqual(CommandType.Get, getCommand.Type);
         }
 
         [Test]
@@ -31,9 +31,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(@"Список ревьюверов пуст
-
-Reviewer1, присоединяйтесь к списку ревьюверов!", result);
+            Assert.AreEqual("Список ревьюверов пуст\r\n\r\nReviewer1, присоединяйтесь к списку ревьюверов!", result);
         }
 
         [Test]
@@ -55,7 +53,7 @@ Reviewer1, присоединяйтесь к списку ревьюверов!"
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(result, "Список ревьюверов пуст");
+            Assert.AreEqual("Список ревьюверов пуст", result);
         }
 
         [Test]
@@ -92,7 +90,7 @@ Reviewer1, присоединяйтесь к списку ревьюверов!"
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(result, "Список ревьюверов пуст");
+            Assert.AreEqual("Список ревьюверов пуст", result);
         }
 
         [Test]
@@ -109,20 +107,18 @@ Reviewer1, присоединяйтесь к списку ревьюверов!"
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(@"Reviewer0
-
-Reviewer100, присоединяйтесь к списку ревьюверов!", result);
-            Assert.AreEqual(chatMembers[0].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[1].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[2].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[3].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[4].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[5].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[6].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[7].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[8].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[9].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[10].LastReview, nowDateTime);
+            Assert.AreEqual("Reviewer0\r\n\r\nReviewer100, присоединяйтесь к списку ревьюверов!", result);
+            Assert.AreEqual(nowDateTime, chatMembers[0].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[1].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[2].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[3].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[4].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[5].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[6].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[7].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[8].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[9].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[10].LastReview);
         }
 
         [TestCase(0, 6, "Reviewer6")]
@@ -176,19 +172,18 @@ Reviewer100, присоединяйтесь к списку ревьюверов
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(result, @"Reviewer10
-Reviewer8");
-            Assert.AreNotEqual(chatMembers[0].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[1].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[2].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[3].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[4].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[5].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[6].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[7].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[8].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[9].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[10].LastReview, nowDateTime);
+            Assert.AreEqual("Reviewer10\r\nReviewer8", result);
+            Assert.AreNotEqual(nowDateTime, chatMembers[0].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[1].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[2].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[3].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[4].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[5].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[6].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[7].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[8].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[9].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[10].LastReview);
         }
 
         [Test]
@@ -205,25 +200,18 @@ Reviewer8");
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(result, @"Reviewer6
-Reviewer10
-Reviewer8
-Reviewer1
-Reviewer7
-Reviewer4
-Reviewer9
-Reviewer2");
-            Assert.AreNotEqual(chatMembers[0].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[1].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[2].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[3].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[4].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[5].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[6].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[7].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[8].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[9].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[10].LastReview, nowDateTime);
+            Assert.AreEqual("Reviewer6\r\nReviewer10\r\nReviewer8\r\nReviewer1\r\nReviewer7\r\nReviewer4\r\nReviewer9\r\nReviewer2", result);
+            Assert.AreNotEqual(nowDateTime, chatMembers[0].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[1].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[2].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[3].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[4].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[5].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[6].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[7].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[8].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[9].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[10].LastReview);
         }
 
         [Test]
@@ -240,19 +228,18 @@ Reviewer2");
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(result, @"Reviewer3
-Reviewer5");
-            Assert.AreNotEqual(chatMembers[0].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[1].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[2].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[3].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[4].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[5].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[6].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[7].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[8].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[9].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[10].LastReview, nowDateTime);
+            Assert.AreEqual("Reviewer3\r\nReviewer5", result);
+            Assert.AreNotEqual(nowDateTime, chatMembers[0].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[1].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[2].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[3].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[4].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[5].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[6].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[7].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[8].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[9].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[10].LastReview);
         }
 
         [Test]
@@ -269,21 +256,18 @@ Reviewer5");
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(result, @"Reviewer6
-Reviewer10
-Reviewer1
-Reviewer7");
-            Assert.AreNotEqual(chatMembers[0].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[1].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[2].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[3].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[4].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[5].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[6].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[7].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[8].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[9].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[10].LastReview, nowDateTime);
+            Assert.AreEqual("Reviewer6\r\nReviewer10\r\nReviewer1\r\nReviewer7", result);
+            Assert.AreNotEqual(nowDateTime, chatMembers[0].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[1].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[2].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[3].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[4].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[5].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[6].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[7].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[8].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[9].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[10].LastReview);
         }
 
         [Test]
@@ -300,27 +284,18 @@ Reviewer7");
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual(result, @"Reviewer0
-Reviewer6
-Reviewer10
-Reviewer3
-Reviewer8
-Reviewer5
-Reviewer1
-Reviewer7
-Reviewer9
-Reviewer2");
-            Assert.AreEqual(chatMembers[0].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[1].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[2].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[3].LastReview, nowDateTime);
-            Assert.AreNotEqual(chatMembers[4].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[5].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[6].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[7].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[8].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[9].LastReview, nowDateTime);
-            Assert.AreEqual(chatMembers[10].LastReview, nowDateTime);
+            Assert.AreEqual("Reviewer0\r\nReviewer6\r\nReviewer10\r\nReviewer3\r\nReviewer8\r\nReviewer5\r\nReviewer1\r\nReviewer7\r\nReviewer9\r\nReviewer2", result);
+            Assert.AreEqual(nowDateTime, chatMembers[0].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[1].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[2].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[3].LastReview);
+            Assert.AreNotEqual(nowDateTime, chatMembers[4].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[5].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[6].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[7].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[8].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[9].LastReview);
+            Assert.AreEqual(nowDateTime, chatMembers[10].LastReview);
         }
 
         private IDataProvider GetDbProvider(List<ChatMember> chatMembers)

@@ -76,8 +76,8 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = addCommand.Execute(context);
 
-            Assert.AreEqual(result, "'User Name_1 From Chat_1' уже присутствует в списке");
-            Assert.AreEqual(chatMembers.Count, 5);
+            Assert.AreEqual("'User Name_1 From Chat_1' уже присутствует в списке", result);
+            Assert.AreEqual(5, chatMembers.Count);
         }
 
         [Test]
@@ -91,8 +91,8 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = addCommand.Execute(context);
 
-            Assert.AreEqual(result, "'User Name_1 From Chat_1' уже присутствует в списке");
-            Assert.AreEqual(chatMembers.Count, 5);
+            Assert.AreEqual("'User Name_1 From Chat_1' уже присутствует в списке", result);
+            Assert.AreEqual(5, chatMembers.Count);
         }
 
         private IParametersParser GetParametersParser()

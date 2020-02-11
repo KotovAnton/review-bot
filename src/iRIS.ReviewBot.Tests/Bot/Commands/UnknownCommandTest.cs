@@ -12,7 +12,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
         {
             var unknownCommand = new UnknownCommand();
 
-            Assert.AreEqual(unknownCommand.Type, CommandType.Unknown);
+            Assert.AreEqual(CommandType.Unknown, unknownCommand.Type);
         }
 
         [Test]
@@ -22,10 +22,9 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
             var context = new CommandContext(null, null, null);
 
             var result = unknownCommand.Execute(context);
-            var data = @"**Неизвестная команда...**
-Список доступных команд можно просмотреть отправив **help**";
+            var data = "**Неизвестная команда...**\r\nСписок доступных команд можно просмотреть отправив **help**";
 
-            Assert.AreEqual(result, data);
+            Assert.AreEqual(data, result);
         }
     }
 }

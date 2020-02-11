@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data.SqlClient;
+using Dapper;
 using Dapper.Contrib.Extensions;
 
 namespace iRIS.ReviewBot.Bot
@@ -37,9 +37,7 @@ namespace iRIS.ReviewBot.Bot
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.GetAll<ChatMember>()
-                    .Where(_ => string.Equals(_.ChatId, chatId, StringComparison.OrdinalIgnoreCase) && string.Equals(_.Name, name, StringComparison.OrdinalIgnoreCase))
-                    .FirstOrDefault();
+                return connection.QueryFirstOrDefault<ChatMember>("SELECT [Id], [ChatId], [Name], [LastReview], [Team] FROM [ChatMembers] WHERE [ChatId] = @ChatId AND [Name] = @Name", new { ChatId = chatId, Name = name });
             }
         }
 
@@ -47,9 +45,7 @@ namespace iRIS.ReviewBot.Bot
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.GetAll<ChatMember>()
-                    .Where(_ => string.Equals(_.ChatId, chatId, StringComparison.OrdinalIgnoreCase))
-                    .ToList();
+                return connection.Query<ChatMember>("SELECT [Id], [ChatId], [Name], [LastReview], [Team] FROM [ChatMembers] WHERE [ChatId] = @ChatId", new { ChatId = chatId }).AsList();
             }
         }
 

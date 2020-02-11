@@ -12,7 +12,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
         {
             var helpCommand = new HelpCommand();
 
-            Assert.AreEqual(helpCommand.Type, CommandType.Help);
+            Assert.AreEqual(CommandType.Help, helpCommand.Type);
         }
 
         [Test]
@@ -22,40 +22,9 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
             var context = new CommandContext(null, null, null);
 
             var result = helpCommand.Execute(context);
-            var text = @"**Список команд:**
+            var expectedResult = "**Список команд:**\r\n\r\nДобавление ревьюера в список: **add [user name] [-t team]**\r\nПримеры использования:\r\n1)Добавление пользователя с именем Ivan Ivanov\r\n*add Ivan Ivanov*\r\n2)Добавление пользователя с именем Ivan Ivanov из команды Team1\r\n*add Ivan Ivanov -t Team1*\r\n3)Добавление отправителя\r\n*add*\r\n4)Добавление отправителя из команды Team1\r\n*add -t Team1*\r\n\r\nУдаление ревьюера из списка: **delete [user name]**\r\nПримеры использования:\r\n1)Удаление пользователя с именем Ivan Ivanov\r\n*delete Ivan Ivanov*\r\n2)Удаление отправителя\r\n*delete*\r\n\r\nЗапросить ревьюера: **get [N] [-t team]**\r\nПримеры использования:\r\n1)Получить одного ревьюера\r\n*get*\r\n2)Получить одного ревьюера из команды Team1\r\n*get -t Team1*\r\n3)Получить список из двух ревьюеров\r\n*get 2*\r\n4)Получить список из двух ревьюеров из команды Team1\r\n*get 2 -t Team1*\r\n\r\nСписок ревьюеров: **list**";
 
-Добавление ревьюера в список: **add [user name] [-t team]**
-Примеры использования:
-1)Добавление пользователя с именем Ivan Ivanov
-*add Ivan Ivanov*
-2)Добавление пользователя с именем Ivan Ivanov из команды Team1
-*add Ivan Ivanov -t Team1*
-3)Добавление отправителя
-*add*
-4)Добавление отправителя из команды Team1
-*add -t Team1*
-
-Удаление ревьюера из списка: **delete [user name]**
-Примеры использования:
-1)Удаление пользователя с именем Ivan Ivanov
-*delete Ivan Ivanov*
-2)Удаление отправителя
-*delete*
-
-Запросить ревьюера: **get [N] [-t team]**
-Примеры использования:
-1)Получить одного ревьюера
-*get*
-2)Получить одного ревьюера из команды Team1
-*get -t Team1*
-3)Получить список из двух ревьюеров
-*get 2*
-4)Получить список из двух ревьюеров из команды Team1
-*get 2 -t Team1*
-
-Список ревьюеров: **list**";
-
-            Assert.AreEqual(text, result);
+            Assert.AreEqual(expectedResult, result);
         }
 
     }

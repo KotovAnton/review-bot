@@ -15,7 +15,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
         {
             var listCommand = new ListCommand(null);
 
-            Assert.AreEqual(listCommand.Type, CommandType.List);
+            Assert.AreEqual(CommandType.List, listCommand.Type);
         }
 
         [Test]
@@ -64,12 +64,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
             var context = new CommandContext(null, null, null);
 
             var result = listCommand.Execute(context);
-            var expectedResult = @"Список:
-User1 Name (Team1)
-User2 Name
-User3 Name
-User5 Name (Team1)
-User4 Name (Team2)";
+            var expectedResult = "Список:\r\nUser1 Name (Team1)\r\nUser2 Name\r\nUser3 Name\r\nUser5 Name (Team1)\r\nUser4 Name (Team2)";
 
             Assert.AreEqual(expectedResult, result);
         }
