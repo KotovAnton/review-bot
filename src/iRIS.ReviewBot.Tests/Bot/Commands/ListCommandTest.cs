@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using Moq;
 
@@ -64,7 +65,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
             var context = new CommandContext(null, null, null);
 
             var result = listCommand.Execute(context);
-            var expectedResult = "Список:\r\nUser1 Name (Team1)\r\nUser2 Name\r\nUser3 Name\r\nUser5 Name (Team1)\r\nUser4 Name (Team2)";
+            var expectedResult = $"Список:{Environment.NewLine}User1 Name (Team1){Environment.NewLine}User2 Name{Environment.NewLine}User3 Name{Environment.NewLine}User5 Name (Team1){Environment.NewLine}User4 Name (Team2)";
 
             Assert.AreEqual(expectedResult, result);
         }

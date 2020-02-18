@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace iRIS.ReviewBot.Tests.Bot.Commands
 {
@@ -22,7 +23,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
             var context = new CommandContext(null, null, null);
 
             var result = unknownCommand.Execute(context);
-            var data = "**Неизвестная команда...**\r\nСписок доступных команд можно просмотреть отправив **help**";
+            var data = $"**Неизвестная команда...**{Environment.NewLine}Список доступных команд можно просмотреть отправив **help**";
 
             Assert.AreEqual(data, result);
         }

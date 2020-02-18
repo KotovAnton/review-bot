@@ -31,7 +31,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual("Список ревьюверов пуст\r\n\r\nReviewer1, присоединяйтесь к списку ревьюверов!", result);
+            Assert.AreEqual($"Список ревьюверов пуст{Environment.NewLine}{Environment.NewLine}Reviewer1, присоединяйтесь к списку ревьюверов!", result);
         }
 
         [Test]
@@ -107,7 +107,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual("Reviewer0\r\n\r\nReviewer100, присоединяйтесь к списку ревьюверов!", result);
+            Assert.AreEqual($"Reviewer0{Environment.NewLine}{Environment.NewLine}Reviewer100, присоединяйтесь к списку ревьюверов!", result);
             Assert.AreEqual(nowDateTime, chatMembers[0].LastReview);
             Assert.AreNotEqual(nowDateTime, chatMembers[1].LastReview);
             Assert.AreNotEqual(nowDateTime, chatMembers[2].LastReview);
@@ -172,7 +172,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual("Reviewer10\r\nReviewer8", result);
+            Assert.AreEqual($"Reviewer10{Environment.NewLine}Reviewer8", result);
             Assert.AreNotEqual(nowDateTime, chatMembers[0].LastReview);
             Assert.AreNotEqual(nowDateTime, chatMembers[1].LastReview);
             Assert.AreNotEqual(nowDateTime, chatMembers[2].LastReview);
@@ -200,7 +200,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual("Reviewer6\r\nReviewer10\r\nReviewer8\r\nReviewer1\r\nReviewer7\r\nReviewer4\r\nReviewer9\r\nReviewer2", result);
+            Assert.AreEqual($"Reviewer6{Environment.NewLine}Reviewer10{Environment.NewLine}Reviewer8{Environment.NewLine}Reviewer1{Environment.NewLine}Reviewer7{Environment.NewLine}Reviewer4{Environment.NewLine}Reviewer9{Environment.NewLine}Reviewer2", result);
             Assert.AreNotEqual(nowDateTime, chatMembers[0].LastReview);
             Assert.AreEqual(nowDateTime, chatMembers[1].LastReview);
             Assert.AreEqual(nowDateTime, chatMembers[2].LastReview);
@@ -228,7 +228,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual("Reviewer3\r\nReviewer5", result);
+            Assert.AreEqual($"Reviewer3{Environment.NewLine}Reviewer5", result);
             Assert.AreNotEqual(nowDateTime, chatMembers[0].LastReview);
             Assert.AreNotEqual(nowDateTime, chatMembers[1].LastReview);
             Assert.AreNotEqual(nowDateTime, chatMembers[2].LastReview);
@@ -256,7 +256,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual("Reviewer6\r\nReviewer10\r\nReviewer1\r\nReviewer7", result);
+            Assert.AreEqual($"Reviewer6{Environment.NewLine}Reviewer10{Environment.NewLine}Reviewer1{Environment.NewLine}Reviewer7", result);
             Assert.AreNotEqual(nowDateTime, chatMembers[0].LastReview);
             Assert.AreEqual(nowDateTime, chatMembers[1].LastReview);
             Assert.AreNotEqual(nowDateTime, chatMembers[2].LastReview);
@@ -284,7 +284,7 @@ namespace iRIS.ReviewBot.Tests.Bot.Commands
 
             var result = getCommand.Execute(context);
 
-            Assert.AreEqual("Reviewer0\r\nReviewer6\r\nReviewer10\r\nReviewer3\r\nReviewer8\r\nReviewer5\r\nReviewer1\r\nReviewer7\r\nReviewer9\r\nReviewer2", result);
+            Assert.AreEqual($"Reviewer0{Environment.NewLine}Reviewer6{Environment.NewLine}Reviewer10{Environment.NewLine}Reviewer3{Environment.NewLine}Reviewer8{Environment.NewLine}Reviewer5{Environment.NewLine}Reviewer1{Environment.NewLine}Reviewer7{Environment.NewLine}Reviewer9{Environment.NewLine}Reviewer2", result);
             Assert.AreEqual(nowDateTime, chatMembers[0].LastReview);
             Assert.AreEqual(nowDateTime, chatMembers[1].LastReview);
             Assert.AreEqual(nowDateTime, chatMembers[2].LastReview);
