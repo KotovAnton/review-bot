@@ -14,8 +14,6 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: Build with dotnet
-      working-directory: ./src/iRIS.ReviewBot.Azure
-      run: dotnet build
-    - name: Test with dotnet
-      working-directory: ./src/iRIS.ReviewBot.Test
-      run: dotnet test
+      run: 
+        dotnet build ./src/iRIS.ReviewBot.Azure/iRIS.ReviewBot.Azure.csproj
+        dotnet test ./src/iRIS.ReviewBot.Tests/iRIS.ReviewBot.Tests.csproj
