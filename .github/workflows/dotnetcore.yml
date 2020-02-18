@@ -16,4 +16,6 @@ jobs:
     - name: Build with dotnet
       run: 
         dotnet build ./src/iRIS.ReviewBot.Azure/iRIS.ReviewBot.Azure.csproj
+    - name: Test with dotnet
+      run: 
         dotnet test ./src/iRIS.ReviewBot.Tests/iRIS.ReviewBot.Tests.csproj
