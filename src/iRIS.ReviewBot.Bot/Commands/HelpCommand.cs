@@ -51,7 +51,12 @@ namespace iRIS.ReviewBot.Bot.Commands
             sb.AppendLine("*get 2 -t Team1*");
 
             sb.AppendLine();
-            sb.Append("Список ревьюверов: **list**");
+            sb.AppendLine("Список ревьюверов: **list**");
+
+            sb.AppendLine();
+            sb.AppendLine("**Пожелания/замечания/предложения:**");
+            sb.AppendLine("telegram: @AAkotov");
+            sb.Append("github: https://github.com/KotovAnton/review-bot/");
 
             return sb.ToString();
         }
