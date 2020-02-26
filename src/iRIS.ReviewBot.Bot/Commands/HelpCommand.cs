@@ -19,7 +19,7 @@ namespace iRIS.ReviewBot.Bot.Commands
             sb.AppendLine("**Список команд:**");
 
             sb.AppendLine();
-            sb.AppendLine("Добавление ревьюера в список: **add [user name] [-t team]**");
+            sb.AppendLine("Добавление ревьювера в список: **add [user name] [-t team]**");
             sb.AppendLine("Примеры использования:");
             sb.AppendLine("1)Добавление пользователя с именем Ivan Ivanov");
             sb.AppendLine("*add Ivan Ivanov*");
@@ -31,7 +31,7 @@ namespace iRIS.ReviewBot.Bot.Commands
             sb.AppendLine("*add -t Team1*");
 
             sb.AppendLine();
-            sb.AppendLine("Удаление ревьюера из списка: **delete [user name]**");
+            sb.AppendLine("Удаление ревьювера из списка: **delete [user name]**");
             sb.AppendLine("Примеры использования:");
             sb.AppendLine("1)Удаление пользователя с именем Ivan Ivanov");
             sb.AppendLine("*delete Ivan Ivanov*");
@@ -39,19 +39,19 @@ namespace iRIS.ReviewBot.Bot.Commands
             sb.AppendLine("*delete*");
 
             sb.AppendLine();
-            sb.AppendLine("Запросить ревьюера: **get [N] [-t team]**");
+            sb.AppendLine("Запросить ревьювера: **get [N] [-t team]**");
             sb.AppendLine("Примеры использования:");
-            sb.AppendLine("1)Получить одного ревьюера");
+            sb.AppendLine("1)Получить одного ревьювера");
             sb.AppendLine("*get*");
-            sb.AppendLine("2)Получить одного ревьюера из команды Team1");
+            sb.AppendLine("2)Получить одного ревьювера из команды Team1");
             sb.AppendLine("*get -t Team1*");
-            sb.AppendLine("3)Получить список из двух ревьюеров");
+            sb.AppendLine("3)Получить список из двух ревьюверов");
             sb.AppendLine("*get 2*");
-            sb.AppendLine("4)Получить список из двух ревьюеров из команды Team1");
+            sb.AppendLine("4)Получить список из двух ревьюверов из команды Team1");
             sb.AppendLine("*get 2 -t Team1*");
 
             sb.AppendLine();
-            sb.Append("Список ревьюеров: **list**");
+            sb.Append("Список ревьюверов: **list**");
 
             return sb.ToString();
         }
