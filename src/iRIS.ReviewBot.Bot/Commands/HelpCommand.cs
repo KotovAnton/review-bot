@@ -55,7 +55,6 @@ namespace iRIS.ReviewBot.Bot.Commands
 
             sb.AppendLine();
             sb.AppendLine("**Пожелания/замечания/предложения:**");
-            sb.AppendLine("telegram: @AAkotov");
             sb.Append("github: https://github.com/KotovAnton/review-bot/");
 
             return sb.ToString();
